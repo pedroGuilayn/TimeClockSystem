@@ -1,0 +1,46 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type RegisteredTime {
+  id: ID!
+  user_id: Float!
+  time_registered: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Users {
+  id: ID!
+  name: String!
+  email: String!
+  password: String!
+  role: String!
+  registeredTimes: [RegisteredTime!]
+}
+
+type Query {
+  getUsers: [Users!]!
+  getUserByID(id: Float!): Users!
+  validateUser(email: String!, password: String!): Int!
+  getAllUsersWithTimes(orderBy: String): [Users!]!
+}
+
+type Mutation {
+  createUser(data: CreateUserInput!): Users!
+  registerClock(data: RegisterClockInput!): RegisteredTime!
+}
+
+input CreateUserInput {
+  name: String!
+  email: String!
+  password: String!
+  role: String!
+}
+
+input RegisterClockInput {
+  user_id: Float!
+}
