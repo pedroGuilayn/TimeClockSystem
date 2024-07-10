@@ -23,9 +23,8 @@ type Users {
 }
 
 type Query {
-  getUsers: [Users!]!
-  getUserByID(id: Float!): Users!
-  validateUser(email: String!, password: String!): Int!
+  validateUser(email: String!, password: String!): Users!
+  getUserByID(id: Float!, orderBy: String): Users!
   getAllUsersWithTimes(orderBy: String): [Users!]!
 }
 
